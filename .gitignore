@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Production build
+dist/
+build/
+
+# Local env files
+.env
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Optional lock files (only keep one if needed)
+package-lock.json
+yarn.lock
+
+# Cache files
+.cache/
