@@ -25,20 +25,49 @@
 
     <!-- 📌 Панель фильтров -->
     <div v-if="filtersVisible" class="filters-box">
-      <select v-model="selectedFunding" class="filter-select">
-        <option disabled value="">Финансирование</option>
-        <option>TechOrda</option>
-        <option>Скидка 30%</option>
-        <option>Скидка 70%</option>
-        <option>Внутренний грант</option>
-      </select>
+      <!-- Тип финансирования -->
+      <div class="relative w-56">
+        <button @click="toggleFundingDropdown" class="filter-select w-full flex justify-between items-center">
+          {{ selectedFunding || 'Финансирование' }}
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul v-if="showFundingDropdown" class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg">
+          <li
+            v-for="option in fundingOptions"
+            :key="option"
+            @click="selectFunding(option)"
+            class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+            :class="{ 'text-[rgb(98,82,254)] font-medium': selectedFunding === option }"
+          >
+            {{ option }}
+          </li>
+        </ul>
+      </div>
 
-      <select v-model="selectedStatus" class="filter-select">
-        <option disabled value="">Статус</option>
-        <option>Студент</option>
-        <option>Выпускник</option>
-      </select>
+      <!-- Статус -->
+      <div class="relative w-56">
+        <button @click="toggleStatusDropdown" class="filter-select w-full flex justify-between items-center">
+          {{ selectedStatus || 'Статус' }}
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul v-if="showStatusDropdown" class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg">
+          <li
+            v-for="option in statusOptions"
+            :key="option"
+            @click="selectStatus(option)"
+            class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+            :class="{ 'text-[rgb(98,82,254)] font-medium': selectedStatus === option }"
+          >
+            {{ option }}
+          </li>
+        </ul>
+      </div>
 
+      <!-- Только с долгами -->
       <label class="filter-select checkbox-style">
         <input type="checkbox" v-model="withDebt" />
         Только с долгами
@@ -49,7 +78,7 @@
     <table class="student-table">
       <thead>
         <tr>
-          <th>#</th>
+          <th class="w-12">#</th>
           <th>Студент</th>
           <th>ИИН</th>
           <th>Финансирование</th>
@@ -57,7 +86,11 @@
       </thead>
       <tbody>
         <tr v-for="(student, index) in filteredStudents" :key="student.id">
-          <td>{{ index + 1 }}</td>
+          <td>
+            <div class="inline-block w-6 h-6 rounded-md bg-[#F1ECFF] text-[rgb(98,82,254)] text-xs font-semibold flex items-center justify-center">
+              {{ index + 1 }}
+            </div>
+          </td>
           <td>{{ student.name }}</td>
           <td>{{ student.iin }}</td>
           <td>{{ student.source }}</td>
@@ -66,6 +99,7 @@
     </table>
   </div>
 </template>
+
 
 <script setup>
 import { ref, computed } from 'vue'
@@ -76,10 +110,25 @@ const filtersVisible = ref(false)
 const selectedFunding = ref('')
 const selectedStatus = ref('')
 const withDebt = ref(false)
+const showFundingDropdown = ref(false)
+const showStatusDropdown = ref(false)
 
 const toggleFilters = () => {
   filtersVisible.value = !filtersVisible.value
 }
+const toggleFundingDropdown = () => {
+  showFundingDropdown.value = !showFundingDropdown.value
+  showStatusDropdown.value = false
+}
+const toggleStatusDropdown = () => {
+  showStatusDropdown.value = !showStatusDropdown.value
+  showFundingDropdown.value = false
+}
+const selectFunding = (opt) => { selectedFunding.value = opt; showFundingDropdown.value = false }
+const selectStatus = (opt) => { selectedStatus.value = opt; showStatusDropdown.value = false }
+
+const fundingOptions = ['TechOrda', 'Скидка 30%', 'Скидка 70%', 'Внутренний грант']
+const statusOptions = ['Студент', 'Выпускник']
 
 const students = ref([
   { id: 1, name: 'Абдрахманов Ербол', iin: '990101350128', source: 'Скидка 30%', status: 'Студент', debt: false },
@@ -89,8 +138,7 @@ const students = ref([
   { id: 5, name: 'Адельбеков Рауан Жанатович', iin: '880729450291', source: 'Внутренний грант', status: 'Выпускник', debt: true },
   { id: 6, name: 'Ажигалиева Гульмира Кайратовна', iin: '920912300141', source: 'Скидка 70%', status: 'Выпускник', debt: true },
   { id: 7, name: 'Акимов Николай Артёмович', iin: '011015400976', source: 'Внутренний грант', status: 'Выпускник', debt: true },
-  { id: 8, name: 'Алибаева Ляззат Ержановна', iin: '780606350220', source: 'Внутренний грант', status: 'Выпускник', debt: true },
-
+  { id: 8, name: 'Алибаева Ляззат Ержановна', iin: '780606350220', source: 'Внутренний грант', status: 'Выпускник', debt: true }
 ])
 
 const filteredStudents = computed(() =>
@@ -98,7 +146,7 @@ const filteredStudents = computed(() =>
     const matchesSearch = s.name.toLowerCase().includes(search.value.toLowerCase())
     const matchesFunding = !selectedFunding.value || s.source === selectedFunding.value
     const matchesStatus = !selectedStatus.value || s.status === selectedStatus.value
-    const matchesDebt = !withDebt.value || s.debt === true
+    const matchesDebt = !withDebt.value || s.debt
     return matchesSearch && matchesFunding && matchesStatus && matchesDebt
   })
 )
@@ -180,6 +228,7 @@ const filteredStudents = computed(() =>
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 16px;
+  margin-left: -16px;
   display: flex;
   gap: 16px;
   align-items: center;
@@ -187,15 +236,14 @@ const filteredStudents = computed(() =>
 }
 
 .filter-select {
-  padding: 8px 12px;
-  border-radius: 10px;
+  background: #f4f0ff;
+  color: #836eff;
   border: 1px solid #cfc0ff;
-  background-color: white;
+  border-radius: 10px;
+  padding: 8px 12px;
   font-size: 14px;
-  min-width: 150px;
-  color: #444;
+  text-align: left;
 }
-
 /* чекбокс в виде кнопки */
 .checkbox-style {
   display: flex;
@@ -203,11 +251,10 @@ const filteredStudents = computed(() =>
   padding: 8px 12px;
   border-radius: 10px;
   border: 1px solid #cfc0ff;
-  background-color: white;
   font-size: 14px;
   min-height: 40px;
   gap: 8px;
-  color: #444;
+  color: #836eff;
 }
 
 /* Таблица */
@@ -220,7 +267,7 @@ const filteredStudents = computed(() =>
 }
 
 .student-table thead {
-  background-color: #f8f6ff;
+  background-color: #b9b3f8;
   font-weight: 600;
 }
 

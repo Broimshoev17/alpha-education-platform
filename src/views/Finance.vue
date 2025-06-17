@@ -1,11 +1,12 @@
 <template>
-  <div class="finance-container">
+  <div class="finance-container finance-reset">
     <!-- Левая панель -->
     <div class="sidebar" v-if="showSidebar">
       <div class="header">
         <h2>Финансовый модуль</h2>
         <button class="close-btn" @click="closeSidebar">✕</button>
       </div>
+      <hr class="sidebar-divider"/>
       <div class="button-group">
         <!-- ✅ Кнопка "Финансовый обзор" -->
         <router-link to="/finance/overview" class="finance-btn">
@@ -23,7 +24,7 @@
         </router-link>
       </div>
     </div>
-    <!-- Правая часть (можно вставить кнопку для повторного открытия) -->
+    <!-- Основная часть – сюда можно вставить контент -->
   </div>
 </template>
 
@@ -49,18 +50,24 @@ function openSidebar() {
   font-family: 'Inter', sans-serif;
 }
 
+.finance-container.finance-reset {
+  margin-top: -22px;
+  margin-left: -22px;
+  margin-bottom: -22px;
+}
+
 .sidebar {
   width: 280px;
   background-color: white;
   padding: 24px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
+  position: relative;
+  padding-top: 16px;
+  padding-bottom: 8px;
 }
 
 .header h2 {
@@ -70,6 +77,9 @@ function openSidebar() {
 }
 
 .close-btn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
   background-color: #f4f0ff;
   border: none;
   border-radius: 8px;
@@ -81,6 +91,12 @@ function openSidebar() {
   align-items: center;
   justify-content: center;
   color: #836eff;
+}
+
+.sidebar-divider {
+  border: none;
+  border-bottom: 1px solid #E6E3F1;
+  margin: 0 0 16px 0;
 }
 
 .button-group {

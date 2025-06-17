@@ -1,41 +1,36 @@
 <template>
   <div class="reports-page">
-    <h2>Отчёты по финансированию</h2>
+    <h2>Отчёты</h2>
 
     <div class="report-tabs">
-      <button
+      <router-link
+        to="/finance/reports/total-revenue"
         class="report-tab"
-        :class="{ active: activeTab === 'techorda' }"
-        @click="activeTab = 'techorda'"
+        :class="{ active: $route.path === '/finance/reports/total-revenue' }"
       >
-        Студенты TechOrda
-      </button>
-      <button
+        Общая выручка
+      </router-link>
+      <router-link
+        to="/finance/reports/debts"
         class="report-tab"
-        :class="{ active: activeTab === 'paid' }"
-        @click="activeTab = 'paid'"
+        :class="{ active: $route.path === '/finance/reports/debts' }"
       >
-        Платные студенты
-      </button>
-      <button
+        Задолженности
+      </router-link>
+      <router-link
+        to="/finance/reports/student-funding"
         class="report-tab"
-        :class="{ active: activeTab === 'discount' }"
-        @click="activeTab = 'discount'"
+        :class="{ active: $route.path === '/finance/reports/student-funding' }"
       >
-        Студенты со скидкой
-      </button>
+        Финансирование студента
+      </router-link>
     </div>
-
-    <div class="create-report-wrapper">
-      <button class="create-report-btn">Создать отчёт</button>
-    </div>
+    <router-view />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const activeTab = ref('techorda')
+// ничего не нужно пока
 </script>
 
 <style scoped>
@@ -53,15 +48,15 @@ h2 {
 .report-tabs {
   display: flex;
   gap: 12px;
-  background-color: #f4f0ff;
+  background-color: #b9b3f8;
   padding: 14px;
   border-radius: 12px;
-  max-width: 700px;
-  margin-bottom: 60px;
+  max-width: 500px;
+  margin-bottom: 100px;
 }
 
 .report-tab {
-  padding: 10px 20px;
+  padding: 10px;
   border-radius: 10px;
   border: none;
   background-color: white;
@@ -70,6 +65,7 @@ h2 {
   font-size: 14px;
   cursor: pointer;
   transition: 0.2s;
+  text-decoration: none;
 }
 
 .report-tab.active {
