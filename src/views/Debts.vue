@@ -97,7 +97,7 @@
   <tr v-for="(item, i) in filteredRows" :key="i" class="border-t">
     <!-- Нумерация -->
     <td class="px-4 py-2">
-      <div class="inline-block w-6 h-6 rounded-md bg-[#F1ECFF] text-[rgb(98,82,254)] text-xs font-semibold flex items-center justify-center">
+      <div class=" w-6 h-6 rounded-md bg-[#F1ECFF] text-[rgb(98,82,254)] text-xs font-semibold flex items-center justify-center">
         {{ i + 1 }}
       </div>
     </td>

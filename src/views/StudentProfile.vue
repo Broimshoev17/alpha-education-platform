@@ -15,31 +15,27 @@
       <span>{{ student?.iin }}</span>
 
       <span class="font-medium">Email</span>
-      <span>{{ student?.email }}</span>
-
+      
       <span class="font-medium">Телефон</span>
-      <span>{{ student?.phone }}</span>
-
+      
       <span class="font-medium">Status</span>
       <span class="capitalize">{{ student?.status }}</span>
 
       <span class="font-medium">Top Student</span>
-      <span>{{ student?.topStudent ? 'да' : 'нет' }}</span>
-
+      
       <span class="font-medium">Финансирование</span>
-      <span>{{ student?.funding }}</span>
-
+      
       <span class="font-medium">Сумма оплачено</span>
-      <span>{{ student?.paid }}</span>
+      
 
       <span class="font-medium">Сумма осталось</span>
-      <span>{{ student?.due }}</span>
+      
 
       <span class="font-medium">Привязка к потоку</span>
       <span>{{ student?.stream }}</span>
 
       <span class="font-medium">Поток</span>
-      <span>{{ student?.streamCode }}</span>
+      
     </div>
   </div>
 </template>

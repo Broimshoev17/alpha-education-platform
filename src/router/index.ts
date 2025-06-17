@@ -17,7 +17,6 @@ const routes = [
   { path: '/finance/payments', name: 'StudentPayments', component: () => import('@/views/StudentPayments.vue') },
   { path: '/finance/reports', name: 'Reports', component: () => import('@/views/Reports.vue') },
   { path: '/finance/overview', name: 'FinanceOverview', component: () => import('@/views/FinanceOverview.vue') },
-  // { path: '/notifications', name: 'Notifications', component: () => import('@/views/Notifications.vue') },
   { path: '/finance/reports/total-revenue', component: () => import('@/views/TotalRevenue.vue') },
   { path: '/finance/reports/debts', component: () => import ('@/views/Debts.vue') },
   { path: '/finance/reports/student-funding', name: 'StudentFunding', component: () => import('@/views/StudentFunding.vue') },
