@@ -2,54 +2,54 @@
   <div class="p-6 font-inter">
     <h2 class="text-2xl font-bold mb-6">Общая выручка</h2>
 
-    <!-- Кнопки фильтрации вкладок -->
-    <div class="flex space-x-4 bg-purple-50 p-3 rounded-lg mb-4">
-      <router-link
-        to="/finance/reports/total-revenue"
-        class="tab-button"
-        :class="{ 'tab-button-active': route.path === '/finance/reports/total-revenue' }"
-      >Общая выручка</router-link>
-      <router-link to="/finance/reports/debts" class="tab-button">Задолженности</router-link>
-      <router-link to="/finance/reports/student-funding" class="tab-button">Финансирование студентов</router-link>
+<!-- Кнопки фильтрации вкладок -->
+  <div class="flex space-x-4 bg-purple-50 p-3 rounded-lg mb-4">
+    <router-link
+      to="/finance/reports/total-revenue"
+      class="tab-button"
+      :class="{ 'tab-button-active': route.path === '/finance/reports/total-revenue' }"
+    >Общая выручка</router-link>
+    <router-link to="/finance/reports/debts" class="tab-button">Задолженности</router-link>
+    <router-link to="/finance/reports/student-funding" class="tab-button">Финансирование студентов</router-link>
+  </div>
+
+<!-- Фильтры -->
+  <div class="filters-wrapper relative flex flex-wrap gap-3 mb-6">
+<!-- Начало периода -->
+  <div class="relative">
+    <button @click="toggleStartPicker" class="filter-select w-48 start-picker-btn">
+      {{ startDate ? formatDate(startDate) : 'Начало периода' }}
+    </button>
+    <teleport to="body">
+      <div
+        v-if="showStartPicker"
+        class="datepicker-popup"
+        :style="popupPosition.start"
+        ref="startPickerRef"
+      >
+        <Datepicker v-model="startDate" @update:modelValue="closeStartPicker" />
+      </div>
+      </teleport>
     </div>
 
-    <!-- Фильтры -->
-    <div class="filters-wrapper relative flex flex-wrap gap-3 mb-6">
-      <!-- Начало периода -->
-      <div class="relative">
-        <button @click="toggleStartPicker" class="filter-select w-48 start-picker-btn">
-         {{ startDate ? formatDate(startDate) : 'Начало периода' }}
-        </button>
-        <teleport to="body">
-          <div
-            v-if="showStartPicker"
-            class="datepicker-popup"
-            :style="popupPosition.start"
-            ref="startPickerRef"
-          >
-            <Datepicker v-model="startDate" @update:modelValue="closeStartPicker" />
-          </div>
-        </teleport>
+<!-- Конец периода -->
+  <div class="relative">
+    <button @click="toggleEndPicker" class="filter-select w-48 end-picker-btn">
+      {{ endDate ? formatDate(endDate) : 'Конец периода' }}
+    </button>
+    <teleport to="body">
+      <div
+        v-if="showEndPicker"
+        class="datepicker-popup"
+        :style="popupPosition.end"
+        ref="endPickerRef"
+      >
+        <Datepicker v-model="endDate" @update:modelValue="closeEndPicker" />
       </div>
+    </teleport>
+   </div>
 
-      <!-- Конец периода -->
-      <div class="relative">
-        <button @click="toggleEndPicker" class="filter-select w-48 end-picker-btn">
-          {{ endDate ? formatDate(endDate) : 'Конец периода' }}
-        </button>
-        <teleport to="body">
-          <div
-            v-if="showEndPicker"
-            class="datepicker-popup"
-            :style="popupPosition.end"
-            ref="endPickerRef"
-          >
-            <Datepicker v-model="endDate" @update:modelValue="closeEndPicker" />
-          </div>
-        </teleport>
-      </div>
-
-     <!--"Курс" -->
+<!--"Курс" -->
 <div class="relative w-48">
   <button @click="toggleCourseDropdown" class="filter-select w-full flex justify-between items-center">
     {{ selectedCourse || 'Курс' }}
@@ -109,30 +109,30 @@
 </div>
 </div>
 
-    <!-- Таблица -->
-    <table class="w-full border border-purple-200 rounded-lg overflow-hidden text-left">
-      <thead class="bg-[rgb(185,179,248)] text-sm font-semibold">
-        <tr>
-          <th class="px-4 py-2">Дата</th>
+<!-- Таблица -->
+  <table class="w-full border border-purple-200 rounded-lg overflow-hidden text-left">
+    <thead class="bg-[rgb(185,179,248)] text-sm font-semibold">
+      <tr>
+        <th class="px-4 py-2">Дата</th>
           <th class="px-4 py-2">Сумма (тг)</th>
           <th class="px-4 py-2">Курс</th>
           <th class="px-4 py-2">Студент</th>
           <th class="px-4 py-2">Оплата</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="border-t" v-for="(row, i) in filteredRows" :key="i">
-          <td class="px-4 py-2">{{ row.date }}</td>
-          <td class="px-4 py-2">{{ row.amount }}</td>
-          <td class="px-4 py-2">{{ row.course }}</td>
-          <td class="px-4 py-2">{{ row.student }}</td>
-          <td class="px-4 py-2">{{ row.payment }}</td>
-        </tr>
-      </tbody>
-    </table>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-t" v-for="(row, i) in filteredRows" :key="i">
+        <td class="px-4 py-2">{{ row.date }}</td>
+        <td class="px-4 py-2">{{ row.amount }}</td>
+        <td class="px-4 py-2">{{ row.course }}</td>
+        <td class="px-4 py-2">{{ row.student }}</td>
+        <td class="px-4 py-2">{{ row.payment }}</td>
+      </tr>
+    </tbody>
+  </table>
 
 <!-- Summary Box: Always visible -->
-<div class="mt-6 w-full rounded-xl overflow-hidden border border-[#E0D7FF]">
+  <div class="mt-6 w-full rounded-xl overflow-hidden border border-[#E0D7FF]">
   <!-- Период -->
   <div class="bg-[rgb(185,179,248)] px-6 py-4 text-sm font-semibold text-black">
     Период {{ formattedPeriod }}
@@ -149,7 +149,7 @@
   </div>
 </div>
 
-<!-- Save Button: Always visible -->
+<!-- Save Button -->
 <div class="mt-4 flex justify-end">
   <button @click="downloadExcel" class="download-btn">Сохранить в Excel</button>
 </div>
@@ -200,10 +200,7 @@ function selectCourse(course) {
   showCourseDropdown.value = false
 }
 
-
-
 const route = useRoute()
-
 const startDate = ref(null)
 const endDate = ref(null)
 const showStartPicker = ref(false)
@@ -316,11 +313,8 @@ const rows = [
 ]
 </script>
 
-
+<!-- Styles-->
 <style scoped>
-
-
-
 .tab-button,
 .tab-button-active {
   padding: 6px 16px;

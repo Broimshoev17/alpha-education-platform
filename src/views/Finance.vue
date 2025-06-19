@@ -1,33 +1,35 @@
 <template>
   <div class="finance-container finance-reset">
-    <!-- Левая панель -->
-    <div class="sidebar" v-if="showSidebar">
-      <div class="header">
-        <h2>Финансовый модуль</h2>
-        <button class="close-btn" @click="closeSidebar">✕</button>
-      </div>
-      <hr class="sidebar-divider"/>
-      <div class="button-group">
-        <!-- ✅ Кнопка "Финансовый обзор" -->
-        <router-link to="/finance/overview" class="finance-btn">
-          Финансовый обзор
-        </router-link>
 
-        <!-- ✅ Кнопка оплаты студентов -->
-        <router-link to="/finance/payments" class="finance-btn">
-          Оплаты студентов
-        </router-link>
-
-        <!-- ✅ Кнопка отчётов -->
-        <router-link to="/finance/reports" class="finance-btn">
-          Отчёты
-        </router-link>
-      </div>
-    </div>
-    <!-- Основная часть – сюда можно вставить контент -->
+<!-- Левая панель -->
+  <div class="sidebar" v-if="showSidebar">
+  <div class="header">
+    <h2>Финансовый модуль</h2>
+       <button class="close-btn" @click="closeSidebar">✕</button>
   </div>
+    <hr class="sidebar-divider"/>
+  <div class="button-group">
+
+<!-- Кнопка "Финансовый обзор" -->
+  <router-link to="/finance/overview" class="finance-btn">
+    Финансовый обзор
+  </router-link>
+
+<!-- Кнопка оплаты студентов -->
+  <router-link to="/finance/payments" class="finance-btn">
+    Оплаты студентов
+  </router-link>
+
+<!-- Кнопка отчётов -->
+  <router-link to="/finance/reports" class="finance-btn">
+    Отчёты
+  </router-link>
+  </div>
+</div>
+</div>
 </template>
 
+<!-- Script -->
 <script setup>
 import { ref } from 'vue'
 
@@ -42,6 +44,7 @@ function openSidebar() {
 }
 </script>
 
+<!-- Styles -->
 <style scoped>
 .finance-container {
   display: flex;

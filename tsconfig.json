@@ -10,8 +10,6 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
-
-    // Добавляем эти две строки:
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

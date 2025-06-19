@@ -7,7 +7,6 @@ import StudentProfile from '@/views/StudentProfile.vue'
 
 
 
-
 const routes = [
   { path: '/',     name: 'Home',     component: Home },
   { path: '/students', name: 'Students', component: Students },
@@ -20,18 +19,11 @@ const routes = [
   { path: '/finance/reports/total-revenue', component: () => import('@/views/TotalRevenue.vue') },
   { path: '/finance/reports/debts', component: () => import ('@/views/Debts.vue') },
   { path: '/finance/reports/student-funding', name: 'StudentFunding', component: () => import('@/views/StudentFunding.vue') },
-
-
-  
-
-
-
-
- 
 ]
 
 export const router = createRouter({
   history: createWebHistory(),
   routes,
 })
+
 

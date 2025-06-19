@@ -1,38 +1,39 @@
 <template>
   <div class="reports-page">
     <h2>Отчёты</h2>
-
-    <div class="report-tabs">
-      <router-link
-        to="/finance/reports/total-revenue"
-        class="report-tab"
-        :class="{ active: $route.path === '/finance/reports/total-revenue' }"
-      >
-        Общая выручка
-      </router-link>
-      <router-link
-        to="/finance/reports/debts"
-        class="report-tab"
-        :class="{ active: $route.path === '/finance/reports/debts' }"
-      >
-        Задолженности
-      </router-link>
-      <router-link
-        to="/finance/reports/student-funding"
-        class="report-tab"
-        :class="{ active: $route.path === '/finance/reports/student-funding' }"
-      >
-        Финансирование студента
-      </router-link>
+  <div class="report-tabs">
+    <router-link
+      to="/finance/reports/total-revenue"
+      class="report-tab"
+      :class="{ active: $route.path === '/finance/reports/total-revenue' }"
+    >
+      Общая выручка
+    </router-link>
+    <router-link
+      to="/finance/reports/debts"
+      class="report-tab"
+      :class="{ active: $route.path === '/finance/reports/debts' }"
+    >
+      Задолженности
+    </router-link>
+    <router-link
+      to="/finance/reports/student-funding"
+      class="report-tab"
+      :class="{ active: $route.path === '/finance/reports/student-funding' }"
+    >
+      Финансирование студента
+    </router-link>
     </div>
     <router-view />
   </div>
 </template>
 
+<!-- Script -->
 <script setup>
-// ничего не нужно пока
+
 </script>
 
+<!-- Styles -->
 <style scoped>
 .reports-page {
   padding: 40px;

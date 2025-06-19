@@ -1,106 +1,106 @@
 <template>
   <div class="student-payments">
-    <!-- Верхняя панель -->
-    <div class="top-bar">
-      <h2>Оплаты студентов</h2>
+<!-- Верхняя панель -->
+  <div class="top-bar">
+    <h2>Оплаты студентов</h2>
 
-      <div class="search-wrapper">
-        <img src="@/assets/logos/search.png" class="search-icon" />
-        <input
-          v-model="search"
-          type="text"
-          placeholder="Поиск"
-          class="search-input"
-        />
-      </div>
-    </div>
-
-    <!-- Кнопка фильтра -->
-    <div class="filter-bar">
-      <button class="filter-btn" @click="toggleFilters">
-        <img src="@/assets/logos/filter.png" class="filter-icon" />
-        Фильтр
-      </button>
-    </div>
-
-    <!-- 📌 Панель фильтров -->
-    <div v-if="filtersVisible" class="filters-box">
-      <!-- Тип финансирования -->
-      <div class="relative w-56">
-        <button @click="toggleFundingDropdown" class="filter-select w-full flex justify-between items-center">
-          {{ selectedFunding || 'Финансирование' }}
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-          </svg>
-        </button>
-        <ul v-if="showFundingDropdown" class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg">
-          <li
-            v-for="option in fundingOptions"
-            :key="option"
-            @click="selectFunding(option)"
-            class="cursor-pointer px-4 py-2 hover:bg-gray-100"
-            :class="{ 'text-[rgb(98,82,254)] font-medium': selectedFunding === option }"
-          >
-            {{ option }}
-          </li>
-        </ul>
-      </div>
-
-      <!-- Статус -->
-      <div class="relative w-56">
-        <button @click="toggleStatusDropdown" class="filter-select w-full flex justify-between items-center">
-          {{ selectedStatus || 'Статус' }}
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-          </svg>
-        </button>
-        <ul v-if="showStatusDropdown" class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg">
-          <li
-            v-for="option in statusOptions"
-            :key="option"
-            @click="selectStatus(option)"
-            class="cursor-pointer px-4 py-2 hover:bg-gray-100"
-            :class="{ 'text-[rgb(98,82,254)] font-medium': selectedStatus === option }"
-          >
-            {{ option }}
-          </li>
-        </ul>
-      </div>
-
-      <!-- Только с долгами -->
-      <label class="filter-select checkbox-style">
-        <input type="checkbox" v-model="withDebt" />
-        Только с долгами
-      </label>
-    </div>
-
-    <!-- Таблица -->
-    <table class="student-table">
-      <thead>
-        <tr>
-          <th class="w-12">#</th>
-          <th>Студент</th>
-          <th>ИИН</th>
-          <th>Финансирование</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(student, index) in filteredStudents" :key="student.id">
-          <td>
-            <div class=" w-6 h-6 rounded-md bg-[#F1ECFF] text-[rgb(98,82,254)] text-xs font-semibold flex items-center justify-center">
-              {{ index + 1 }}
-            </div>
-          </td>
-          <td>{{ student.name }}</td>
-          <td>{{ student.iin }}</td>
-          <td>{{ student.source }}</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="search-wrapper">
+  <img src="@/assets/logos/search.png" class="search-icon" />
+    <input
+      v-model="search"
+      type="text"
+      placeholder="Поиск"
+      class="search-input"
+    />
   </div>
+</div>
+
+<!-- Кнопка фильтра -->
+<div class="filter-bar">
+  <button class="filter-btn" @click="toggleFilters">
+    <img src="@/assets/logos/filter.png" class="filter-icon" />
+      Фильтр
+  </button>
+</div>
+
+<!-- Панель фильтров -->
+<div v-if="filtersVisible" class="filters-box">
+<!-- Тип финансирования -->
+  <div class="relative w-56">
+    <button @click="toggleFundingDropdown" class="filter-select w-full flex justify-between items-center">
+      {{ selectedFunding || 'Финансирование' }}
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+    </button>
+      <ul v-if="showFundingDropdown" class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg">
+        <li
+          v-for="option in fundingOptions"
+          :key="option"
+          @click="selectFunding(option)"
+          class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+          :class="{ 'text-[rgb(98,82,254)] font-medium': selectedFunding === option }"
+        >
+          {{ option }}
+        </li>
+      </ul>
+  </div>
+
+<!-- Статус -->
+  <div class="relative w-56">
+    <button @click="toggleStatusDropdown" class="filter-select w-full flex justify-between items-center">
+      {{ selectedStatus || 'Статус' }}
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+    </button>
+      <ul v-if="showStatusDropdown" class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg">
+        <li
+          v-for="option in statusOptions"
+          :key="option"
+          @click="selectStatus(option)"
+          class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+          :class="{ 'text-[rgb(98,82,254)] font-medium': selectedStatus === option }"
+        >
+        {{ option }}
+      </li>
+    </ul>
+  </div>
+
+<!-- Только с долгами -->
+  <label class="filter-select checkbox-style">
+    <input type="checkbox" v-model="withDebt" />
+      Только с долгами
+    </label>
+</div>
+
+<!-- Таблица -->
+  <table class="student-table">
+    <thead>
+      <tr>
+        <th class="w-12">#</th>
+        <th>Студент</th>
+        <th>ИИН</th>
+        <th>Финансирование</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(student, index) in filteredStudents" :key="student.id">
+        <td>
+          <div class=" w-6 h-6 rounded-md bg-[#F1ECFF] text-[rgb(98,82,254)] text-xs font-semibold flex items-center justify-center">
+            {{ index + 1 }}
+          </div>
+        </td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.iin }}</td>
+        <td>{{ student.source }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </template>
 
-
+<!-- Script -->
 <script setup>
 import { ref, computed } from 'vue'
 
@@ -152,13 +152,13 @@ const filteredStudents = computed(() =>
 )
 </script>
 
+<!-- Script -->
 <style scoped>
 .student-payments {
   padding: 30px;
   font-family: 'Inter', sans-serif;
 }
 
-/* Верхняя панель */
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -197,7 +197,6 @@ const filteredStudents = computed(() =>
   color: #5a4fcf;
 }
 
-/* Кнопка фильтра */
 .filter-bar {
   display: flex;
   margin-bottom: 10px;
@@ -222,7 +221,6 @@ const filteredStudents = computed(() =>
   height: 18px;
 }
 
-/* Панель фильтров */
 .filters-box {
   background-color: #f4f0ff;
   border-radius: 12px;
@@ -244,7 +242,7 @@ const filteredStudents = computed(() =>
   font-size: 14px;
   text-align: left;
 }
-/* чекбокс в виде кнопки */
+
 .checkbox-style {
   display: flex;
   align-items: center;
@@ -257,7 +255,6 @@ const filteredStudents = computed(() =>
   color: #836eff;
 }
 
-/* Таблица */
 .student-table {
   width: 100%;
   border-collapse: collapse;

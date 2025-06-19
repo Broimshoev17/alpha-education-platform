@@ -2,41 +2,42 @@
   <div class="overview-page">
     <h2>Финансовый обзор</h2>
 
-    <!-- Карточки -->
-    <div class="cards">
-      <div class="card revenue-card">
-        <div class="icon-circle green">
-          <span>$</span>
-        </div>
-        <div class="label">Общая выручка</div>
-        <div class="value">5 000 900 тг</div>
-        <div class="growth"><span class="up">↑ 12%</span> с прошлого месяца</div>
+<!-- Карточки -->
+  <div class="cards">
+    <div class="card revenue-card">
+      <div class="icon-circle green">
+        <span>$</span>
       </div>
-      <div class="card debt-card">
-        <div class="icon-circle red">
-          <span>!</span>
-        </div>
-        <div class="label">Общая задолженность</div>
-        <div class="value">1 000 900 тг</div>
-        <div class="growth"><span class="up">↑ 12%</span> с прошлого месяца</div>
+    <div class="label">Общая выручка</div>
+    <div class="value">5 000 900 тг</div>
+    <div class="growth"><span class="up">↑ 12%</span> с прошлого месяца</div>
+  </div>
+    <div class="card debt-card">
+      <div class="icon-circle red">
+        <span>!</span>
       </div>
-    </div>
+    <div class="label">Общая задолженность</div>
+    <div class="value">1 000 900 тг</div>
+    <div class="growth"><span class="up">↑ 12%</span> с прошлого месяца</div>
+  </div>
+  </div>
 
-    <!-- Диаграмма -->
-    <div class="chart-card">
-      <div class="chart-title">Соотношение оплат</div>
-      <div class="chart-content">
-        <canvas id="pieChart" width="200" height="200"></canvas>
-        <div class="legend">
-          <div><span class="dot purple1"></span> Платно — 3 000 000тг</div>
-          <div><span class="dot purple2"></span> TechOrda — 1 500 000тг</div>
-          <div><span class="dot purple3"></span> Со скидкой — 500 900тг</div>
-        </div>
-      </div>
-    </div>
+<!-- Диаграмма -->
+  <div class="chart-card">
+    <div class="chart-title">Соотношение оплат</div>
+  <div class="chart-content">
+    <canvas id="pieChart" width="200" height="200"></canvas>
+  <div class="legend">
+    <div><span class="dot purple1"></span> Платно — 3 000 000тг</div>
+    <div><span class="dot purple2"></span> TechOrda — 1 500 000тг</div>
+    <div><span class="dot purple3"></span> Со скидкой — 500 900тг</div>
+  </div>
+  </div>
+  </div>
   </div>
 </template>
 
+<!-- Script -->
 <script setup>
 import { onMounted } from 'vue'
 import Chart from 'chart.js/auto'
@@ -63,6 +64,7 @@ onMounted(() => {
 })
 </script>
 
+<!-- Styles -->
 <style scoped>
 .overview-page {
   padding: 40px;
