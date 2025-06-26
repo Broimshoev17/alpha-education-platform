@@ -74,6 +74,7 @@
   </el-container>
   </el-container>
 </template>
+
 <!--Script-->
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router'
@@ -100,6 +101,7 @@ function isActive(path: string) {
 }
 </script>
 
+<!-- Styles -->
 <style scoped>
 .el-menu-vertical-demo {
   border-right: none;

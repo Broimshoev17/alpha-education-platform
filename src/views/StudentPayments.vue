@@ -85,7 +85,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(student, index) in filteredStudents" :key="student.id">
+      <tr
+         v-for="(student, index) in filteredStudents"
+         :key="student.id"
+          @click="$router.push({ name: 'StudentPaymentCalendar', params: { id: student.id } })"
+          class="cursor-pointer"
+>
         <td>
           <div class=" w-6 h-6 rounded-md bg-[#F1ECFF] text-[rgb(98,82,254)] text-xs font-semibold flex items-center justify-center">
             {{ index + 1 }}
