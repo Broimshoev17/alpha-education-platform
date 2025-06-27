@@ -15,13 +15,18 @@
   </div>
 </div>
 
+
 <!-- Кнопка фильтра -->
-<div class="filter-bar">
-  <button class="filter-btn" @click="toggleFilters">
-    <img src="@/assets/logos/filter.png" class="filter-icon" />
-      Фильтр
-  </button>
-</div>
+  <div class="filter-bar">
+    <button
+      :class="['filter-btn', { 'filter-btn--active': filtersVisible }]"
+      @click="toggleFilters"
+      type="button"
+    >
+      <img src="@/assets/logos/filter.png" class="filter-icon" />
+      <span>Фильтр</span>
+    </button>
+  </div>
 
 <!-- Панель фильтров -->
 <div v-if="filtersVisible" class="filters-box">
@@ -112,11 +117,13 @@ import { ref, computed } from 'vue'
 const search = ref('')
 const filtersVisible = ref(false)
 
+
 const selectedFunding = ref('')
 const selectedStatus = ref('')
 const withDebt = ref(false)
 const showFundingDropdown = ref(false)
 const showStatusDropdown = ref(false)
+
 
 const toggleFilters = () => {
   filtersVisible.value = !filtersVisible.value
@@ -279,4 +286,42 @@ const filteredStudents = computed(() =>
   text-align: left;
   border-bottom: 1px solid #eee;
 }
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: white;
+  color: #6252FE;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: rgba(98, 82, 254, 0.1);
+}
+
+.filter-btn--active {
+  background-color: #6252FE;
+  color: white;
+  border-color: #6252FE;
+}
+
+.filter-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.filter-btn--active .filter-icon {
+  filter: brightness(0) invert(1);
+}
+
+.filter-icon {
+  width: 16px;
+  height: 16px;
+}
+
 </style>

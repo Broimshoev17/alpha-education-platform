@@ -52,7 +52,7 @@ h2 {
   background-color: #b9b3f8;
   padding: 14px;
   border-radius: 12px;
-  max-width: 500px;
+  max-width: 520px;
   margin-bottom: 100px;
 }
 
@@ -62,7 +62,7 @@ h2 {
   border: none;
   background-color: white;
   color: #836eff;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 14px;
   cursor: pointer;
   transition: 0.2s;
@@ -85,7 +85,7 @@ h2 {
   color: white;
   border: none;
   border-radius: 8px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 14px;
   cursor: pointer;
 }

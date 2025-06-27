@@ -136,7 +136,7 @@
     </table>
   </div>
 
-<!-- Переключатель режимов с фоном и отступом -->
+<!-- Переключатель режимов -->
   <div class="mt-14 mb-6">
     <div class="bg-[rgb(185,179,248)]  p-2 rounded-lg">
       <div class="flex space-x-3">
@@ -166,7 +166,7 @@
     :key="i"
     class="flex items-center bg-[rgb(194,189,250)] rounded-lg p-4"
   >
-<!-- блок с галочкой -->
+<!-- Блок с галочкой -->
   <div class="p-1 mr-4 flex-shrink-0 bg-[#6252FE] rounded border-2 border-white">
     <svg
       class="w-4 h-4 text-white"
@@ -183,24 +183,21 @@
     </svg>
   </div>
 
-<!-- дата и статус -->
+<!-- Дата и статус -->
   <div class="flex flex-col">
     <div class="text-sm font-semibold leading-tight">{{ formatDate(item.date) }}</div>
     <div class="text-xs text-[#6252FE]">{{ item.paid ? 'Погашен' : 'Не погашен' }}</div>
   </div>
 
-<!-- сумма -->
+<!-- Сумма -->
   <div class="ml-auto bg-white rounded-lg px-4 py-2 text-sm font-semibold">
       {{ item.amount.toLocaleString('ru-RU') }} ₸
   </div>
   </div>
   </div>
 
-
-
-<!-- 2) Режим «История платежей» -->
+<!--Режим «История платежей» -->
   <div v-else-if="mode === 'history'" class="space-y-6">
-
 <!-- Таблица с историей платежей (осталась на месте сверху) -->
   <table class="w-full border border-purple-200 rounded-lg overflow-hidden text-left">
     <thead class="bg-[rgb(185,179,248)] text-sm font-semibold">
@@ -228,8 +225,7 @@
       </tr>
     </tbody>
   </table>
-
-      
+     
 <!-- 1) Кнопка «Добавить платёж» -->
   <div v-if="!showAddPanel" class="flex justify-end">
     <button
@@ -240,8 +236,7 @@
       Добавить платёж
     </button>
   </div>
-
-  
+ 
 <!-- 2) Форма добавления платежа в синем контейнере -->
   <div
     v-else
@@ -264,22 +259,45 @@
       v-model="newPayment.comment"
       type="text"
       placeholder="Комментарий"
-      class="filter-select w-full"
+      class="filter-select w-full focus:outline-none focus:ring-2 focus:ring-[#9a8ffd]"
     />
   </div>
 
-<!-- Статус -->
-  <div class="w-56">
-    <select
-      v-model="newPayment.status"
-      class="filter-select w-full"
+<!-- Статус оплаты (в выпадающем списке) -->
+<div class="relative w-40">
+  <button
+    @click="toggleNewStatusDropdown"
+    class="filter-select w-full flex justify-between items-center"
+    type="button"
+  >
+    {{ newPayment.status || 'Статус' }}
+    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M19 9l-7 7-7-7"/>
+    </svg>
+  </button>
+  <ul
+    v-if="showNewStatusDropdown"
+    class="absolute z-50 mt-2 w-full bg-white border border-purple-200
+           rounded-lg shadow-lg overflow-hidden"
+  >
+    <li
+      @click="selectNewStatus('Оплачен')"
+      class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+      :class="{ 'text-[rgb(98,82,254)] font-medium': newPayment.status === 'Оплачен' }"
     >
-      <option value="" disabled>Статус</option>
-      <option v-for="opt in historyStatusOptions" :key="opt">
-        {{ opt }}
-      </option>
-    </select>
-  </div>
+      Оплачен
+    </li>
+    <li
+      @click="selectNewStatus('Не оплачен')"
+      class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+      :class="{ 'text-[rgb(98,82,254)] font-medium': newPayment.status === 'Не оплачен' }"
+    >
+      Не оплачен
+    </li>
+  </ul>
+</div>
+
 
 <!-- Сумма -->
   <div class="w-56">
@@ -287,7 +305,7 @@
       v-model.number="newPayment.amount"
       type="number"
       placeholder="Сумма"
-      class="filter-select w-full"
+      class="filter-select w-full focus:outline-none focus:ring-2 focus:ring-[#9a8ffd]"
     />
   </div>
 
@@ -533,22 +551,24 @@ table {
   border-collapse: collapse;
 }
 
-/* Стили для статуса (зеленый фон, темно-зеленый текст) */
+/* Стили для статуса (зеленый фон) */
 .status-paid {
   display: inline-block;
-  background-color: #DCFCE7;    /* bg-green-100 */
-  color: #16A34A;               /* text-green-600 */
-  padding: 2px 8px;             /* py-0.5 (0.125rem ≈2px), px-2 (0.5rem ≈8px) */
-  border-radius: 9999px;
-  font-size: 12px;              /* text-xs */
+  border: 1px solid #22C55E;    
+  color: #22C55E;               
+  background: transparent;      
+  padding: 2px 8px;             
+  border-radius: 9999px;        
+  font-size: 12px;
   font-weight: 500;
 }
 
-/* Стили для статуса (красный фон, темно-красный текст) */
+/* Стили для статуса (красный фон) */
 .status-unpaid {
   display: inline-block;
-  background-color: #FEE2E2;    /* bg-red-100 */
-  color: #DC2626;               /* text-red-600 */
+  border: 1px solid #EF4444;    
+  color: #EF4444;              
+  background: transparent;
   padding: 2px 8px;
   border-radius: 9999px;
   font-size: 12px;
@@ -560,7 +580,7 @@ table {
   background-color: #6252FE;
   color: #FFFFFF;
   font-weight: 500;
-  padding: 8px 24px;    /* py-2 (0.5rem ≈8px), px-6 (1.5rem ≈24px) */
+  padding: 8px 24px;    
   border-radius: 8px;
   transition: background-color 0.2s;
 }
