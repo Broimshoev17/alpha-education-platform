@@ -39,10 +39,12 @@
   </div>
 </template>
 
+
 <!-- Scripts -->
 <script setup lang="ts">
 import MetricCard from '@/components/MetricCard.vue'
 </script>
+
 
 <!-- Styles -->
 <style scoped>

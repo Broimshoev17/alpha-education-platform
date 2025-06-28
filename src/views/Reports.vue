@@ -28,10 +28,11 @@
   </div>
 </template>
 
+
 <!-- Script -->
 <script setup>
-
 </script>
+
 
 <!-- Styles -->
 <style scoped>

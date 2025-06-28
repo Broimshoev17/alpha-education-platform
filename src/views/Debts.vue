@@ -163,6 +163,7 @@
 </div>
 </template>
 
+
 <!-- Script -->
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
@@ -288,6 +289,7 @@ const paidAmount = computed(() => {
 const unpaidAmount = computed(() => totalPayments.value - paidAmount.value);
 
 </script>
+
 
 <!--Styles-->
 <style scoped>

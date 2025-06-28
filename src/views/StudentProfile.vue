@@ -28,6 +28,7 @@
   </div>
 </template>
 
+
 <!-- Script -->
 <script setup lang="ts">
 import { onMounted, computed } from 'vue'
@@ -48,6 +49,7 @@ const student = computed(() => {
   return store.list.find(s => s.id.toString() === id)
 })
 </script>
+
 
 <!--Styles-->
 <style scoped>

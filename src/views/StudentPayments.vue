@@ -28,8 +28,6 @@
   </button>
 </div>
 
-
-
 <!-- Панель фильтров -->
 <div v-if="filtersVisible" class="filters-box">
 <!-- Тип финансирования -->
@@ -74,7 +72,6 @@
     </ul>
   </div>
 
-
 <!-- Статус -->
   <div class="relative w-56">
   <button
@@ -116,7 +113,6 @@
   </ul>
 </div>
 
-
 <!-- Только с долгами -->
   <label class="filter-select checkbox-style">
     <input type="checkbox" v-model="withDebt" />
@@ -154,6 +150,7 @@
   </table>
 </div>
 </template>
+
 
 <!-- Script -->
 <script setup>
@@ -208,6 +205,7 @@ const filteredStudents = computed(() =>
   })
 )
 </script>
+
 
 <!-- Script -->
 <style scoped>

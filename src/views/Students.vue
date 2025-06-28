@@ -48,7 +48,6 @@
     <el-icon class="justify-self-end"><ArrowRight /></el-icon>
   </div>
     
-
 <!-- Student List Items -->
   <div class="space-y-4">
     <div
@@ -65,6 +64,7 @@
     </div>
   </div>
 </template>
+
 
 <!-- Script -->
 <script setup lang="ts">
@@ -102,6 +102,7 @@ function goToStudent(id: number) {
   router.push(`/students/${id}`)
 }
 </script>
+
 
 <!-- Styles -->
 <style scoped>

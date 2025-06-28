@@ -369,6 +369,7 @@
   </div>
 </template>
 
+
 <!-- Script -->
 <script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue'
@@ -555,7 +556,6 @@ onMounted(async () => {
   topStudent.value = !!(s as any).topStudent
 })
 </script>
-
 
 
 <!-- Styles -->

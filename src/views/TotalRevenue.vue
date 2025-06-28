@@ -140,7 +140,7 @@
     </li>
   </ul>
 </div>
-  </div>
+</div>
 
 <!-- Таблица -->
   <table class="w-full border border-purple-200 rounded-lg overflow-hidden text-left">
@@ -345,6 +345,7 @@ const rows = [
   { date: '28.05.2025', amount: '39.000', course: 'IT право', student: 'Имангазин А.А.', payment: 'Рассрочка, 1 платеж' },
 ]
 </script>
+
 
 <!-- Styles-->
 <style scoped>

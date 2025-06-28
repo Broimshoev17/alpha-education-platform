@@ -24,6 +24,7 @@
   </div>
 </template>
 
+
 <!-- Script -->
 <script setup>
 import { ref } from 'vue'
@@ -34,6 +35,7 @@ function closeSidebar() {
   showSidebar.value = false
 }
 </script>
+
 
 <!-- Styles -->
 <style scoped>

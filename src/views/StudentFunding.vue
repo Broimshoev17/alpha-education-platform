@@ -181,8 +181,8 @@
 </div>
 </template>
 
-<!-- Script -->
 
+<!-- Script -->
 <script setup>
 import { ref, computed } from 'vue'
 import * as XLSX from 'xlsx'
@@ -283,6 +283,7 @@ function downloadExcel() {
   XLSX.writeFile(wb, 'Финансирование.xlsx')
 }
 </script>
+
 
 <!-- Styles -->
 <style scoped>
