@@ -45,40 +45,53 @@
       </teleport>
     </div>
 
-      <!-- Статус (дропдаун) -->
-  <div class="relative w-40">
-    <button
-      @click="toggleStatusDropdown"
-      class="filter-select w-full flex justify-between items-center"
+ <!-- Статус (дропдаун) -->
+<div class="relative w-40">
+  <button
+    @click="toggleStatusDropdown"
+    class="filter-select w-full flex justify-between items-center"
+    type="button"
   >
     {{ selectedStatus || 'Статус' }}
-      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M19 9l-7 7-7-7"/>
-      </svg>
-    </button>
+    <svg
+      :class="[
+        'w-4 h-4 ml-2 transform transition-transform duration-200',
+        showStatusDropdown ? 'rotate-180' : ''
+      ]"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </button>
   <ul
     v-if="showStatusDropdown"
     class="absolute z-50 mt-2 w-full bg-white border border-purple-200
-    rounded-lg shadow-lg overflow-hidden"
+           rounded-lg shadow-lg overflow-hidden"
   >
-  <li
-    @click="selectStatus('Оплачен')"
-    class="cursor-pointer px-4 py-2 hover:bg-gray-100"
-    :class="{ 'text-[rgb(98,82,254)] font-medium': selectedStatus === 'Оплачен' }"
-  >
-    Оплачен
-  </li>
-  <li
-    @click="selectStatus('Не оплачен')"
-    class="cursor-pointer px-4 py-2 hover:bg-gray-100"
-    :class="{ 'text-[rgb(98,82,254)] font-medium': selectedStatus === 'Не оплачен' }"
-  >
-    Не оплачен
-  </li>
-</ul>
+    <li
+      @click="selectStatus('Оплачен')"
+      class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+      :class="{ 'text-[rgb(98,82,254)] font-medium': selectedStatus === 'Оплачен' }"
+    >
+      Оплачен
+    </li>
+    <li
+      @click="selectStatus('Не оплачен')"
+      class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+      :class="{ 'text-[rgb(98,82,254)] font-medium': selectedStatus === 'Не оплачен' }"
+    >
+      Не оплачен
+    </li>
+  </ul>
 </div>
-</div>
+</div>    
 
 <!-- Table -->
 <table class="w-full border border-purple-200 rounded-lg overflow-hidden text-left">

@@ -49,14 +49,32 @@
     </teleport>
    </div>
 
-<!--"Курс" -->
+<!-- "Курс" -->
 <div class="relative w-48">
-  <button @click="toggleCourseDropdown" class="filter-select w-full flex justify-between items-center">
+  <button
+    @click="toggleCourseDropdown"
+    class="filter-select w-full flex justify-between items-center"
+    type="button"
+  >
     {{ selectedCourse || 'Курс' }}
-    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    <svg
+      :class="[
+        'w-4 h-4 ml-2 transform transition-transform duration-200',
+        showCourseDropdown ? 'rotate-180' : ''
+      ]"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      />
     </svg>
   </button>
+
   <div
     v-if="showCourseDropdown"
     class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg max-h-60 overflow-y-auto"
@@ -81,14 +99,29 @@
   </div>
 </div>
 
-
-
 <!-- Оплата -->
 <div class="relative w-48">
-  <button @click="showPaymentDropdown = !showPaymentDropdown" class="filter-select w-full flex justify-between items-center">
+  <button
+    @click="showPaymentDropdown = !showPaymentDropdown"
+    class="filter-select w-full flex justify-between items-center"
+    type="button"
+  >
     <span>{{ selectedPayment || 'Оплата' }}</span>
-    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    <svg
+      :class="[
+        'w-4 h-4 ml-2 transform transition-transform duration-200',
+        showPaymentDropdown ? 'rotate-180' : ''
+      ]"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      />
     </svg>
   </button>
 
@@ -107,7 +140,7 @@
     </li>
   </ul>
 </div>
-</div>
+  </div>
 
 <!-- Таблица -->
   <table class="w-full border border-purple-200 rounded-lg overflow-hidden text-left">

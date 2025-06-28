@@ -4,6 +4,7 @@
   <div class="top-bar">
     <h2>Оплаты студентов</h2>
 
+<!-- Поисковик -->
 <div class="search-wrapper">
   <img src="@/assets/logos/search.png" class="search-icon" />
     <input
@@ -15,62 +16,106 @@
   </div>
 </div>
 
-
 <!-- Кнопка фильтра -->
-  <div class="filter-bar">
-    <button
-      :class="['filter-btn', { 'filter-btn--active': filtersVisible }]"
-      @click="toggleFilters"
-      type="button"
-    >
-      <img src="@/assets/logos/filter.png" class="filter-icon" />
-      <span>Фильтр</span>
-    </button>
-  </div>
+<div class="filter-bar" style="width: 300px;">
+  <button
+    :class="['filter-btn', { 'filter-btn--active': filtersVisible }]"
+    @click="toggleFilters"
+    type="button"
+  >
+    <img src="@/assets/logos/filter.png" class="filter-icon" />
+    <span>Фильтр</span>
+  </button>
+</div>
+
+
 
 <!-- Панель фильтров -->
 <div v-if="filtersVisible" class="filters-box">
 <!-- Тип финансирования -->
   <div class="relative w-56">
-    <button @click="toggleFundingDropdown" class="filter-select w-full flex justify-between items-center">
+    <button
+      @click="toggleFundingDropdown"
+      class="filter-select w-full flex justify-between items-center"
+      type="button"
+    >
       {{ selectedFunding || 'Финансирование' }}
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-        </svg>
+      <svg
+        :class="[
+          'w-4 h-4 ml-2 transform transition-transform duration-200',
+          showFundingDropdown ? 'rotate-180' : ''
+        ]"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
     </button>
-      <ul v-if="showFundingDropdown" class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg">
-        <li
-          v-for="option in fundingOptions"
-          :key="option"
-          @click="selectFunding(option)"
-          class="cursor-pointer px-4 py-2 hover:bg-gray-100"
-          :class="{ 'text-[rgb(98,82,254)] font-medium': selectedFunding === option }"
-        >
-          {{ option }}
-        </li>
-      </ul>
-  </div>
 
-<!-- Статус -->
-  <div class="relative w-56">
-    <button @click="toggleStatusDropdown" class="filter-select w-full flex justify-between items-center">
-      {{ selectedStatus || 'Статус' }}
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-        </svg>
-    </button>
-      <ul v-if="showStatusDropdown" class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg">
-        <li
-          v-for="option in statusOptions"
-          :key="option"
-          @click="selectStatus(option)"
-          class="cursor-pointer px-4 py-2 hover:bg-gray-100"
-          :class="{ 'text-[rgb(98,82,254)] font-medium': selectedStatus === option }"
-        >
+    <ul
+      v-if="showFundingDropdown"
+      class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg"
+    >
+      <li
+        v-for="option in fundingOptions"
+        :key="option"
+        @click="selectFunding(option)"
+        class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+        :class="{ 'text-[rgb(98,82,254)] font-medium': selectedFunding === option }"
+      >
         {{ option }}
       </li>
     </ul>
   </div>
+
+
+<!-- Статус -->
+  <div class="relative w-56">
+  <button
+    @click="toggleStatusDropdown"
+    class="filter-select w-full flex justify-between items-center"
+    type="button"
+  >
+    {{ selectedStatus || 'Статус' }}
+    <svg
+      :class="[
+        'w-4 h-4 ml-2 transform transition-transform duration-200',
+        showStatusDropdown ? 'rotate-180' : ''
+      ]"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </button>
+  <ul
+    v-if="showStatusDropdown"
+    class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg"
+  >
+    <li
+      v-for="option in statusOptions"
+      :key="option"
+      @click="selectStatus(option)"
+      class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+      :class="{ 'text-[rgb(98,82,254)] font-medium': selectedStatus === option }"
+    >
+      {{ option }}
+    </li>
+  </ul>
+</div>
+
 
 <!-- Только с долгами -->
   <label class="filter-select checkbox-style">

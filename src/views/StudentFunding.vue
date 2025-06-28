@@ -28,39 +28,88 @@
   <div class="flex flex-wrap gap-3 mb-6">
 
 <!-- Тип финансирования -->
-  <div class="relative w-56">
-    <button @click="toggleFundingType" class="filter-select w-full flex justify-between items-center">
-      {{ selectedFundingType || 'Тип финансирования' }}
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-          </svg>
-    </button>
-      <ul v-if="showFundingType" class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg">
-          <li v-for="option in fundingTypes" :key="option" @click="selectFundingType(option)"
-              class="cursor-pointer px-4 py-2 hover:bg-gray-100"
-              :class="{ 'text-[rgb(98,82,254)] font-medium': selectedFundingType === option }">
-            {{ option }}
-          </li>
-      </ul>
-  </div>
+<div class="relative w-56">
+  <button
+    @click="toggleFundingType"
+    class="filter-select w-full flex justify-between items-center"
+    type="button"
+  >
+    {{ selectedFundingType || 'Тип финансирования' }}
+    <svg
+      :class="[
+        'w-4 h-4 ml-2 transform transition-transform duration-200',
+        showFundingType ? 'rotate-180' : ''
+      ]"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </button>
+  <ul
+    v-if="showFundingType"
+    class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg"
+  >
+    <li
+      v-for="option in fundingTypes"
+      :key="option"
+      @click="selectFundingType(option)"
+      class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+      :class="{ 'text-[rgb(98,82,254)] font-medium': selectedFundingType === option }"
+    >
+      {{ option }}
+    </li>
+  </ul>
+</div>
 
 <!-- Процент покрытия -->
-  <div class="relative w-56">
-    <button @click="toggleCoveragePercent" class="filter-select w-full flex justify-between items-center">
-      {{ selectedCoverage || 'Процент покрытия' }}
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-        </svg>
-    </button>
-        <ul v-if="showCoveragePercent" class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg">
-          <li v-for="option in coveragePercents" :key="option" @click="selectCoverage(option)"
-              class="cursor-pointer px-4 py-2 hover:bg-gray-100"
-              :class="{ 'text-[rgb(98,82,254)] font-medium': selectedCoverage === option }">
-            {{ option }}
-          </li>
-        </ul>
-      </div>
-    </div>
+<div class="relative w-56">
+  <button
+    @click="toggleCoveragePercent"
+    class="filter-select w-full flex justify-between items-center"
+    type="button"
+  >
+    {{ selectedCoverage || 'Процент покрытия' }}
+    <svg
+      :class="[
+        'w-4 h-4 ml-2 transform transition-transform duration-200',
+        showCoveragePercent ? 'rotate-180' : ''
+      ]"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </button>
+
+  <ul
+    v-if="showCoveragePercent"
+    class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg"
+  >
+    <li
+      v-for="option in coveragePercents"
+      :key="option"
+      @click="selectCoverage(option)"
+      class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+      :class="{ 'text-[rgb(98,82,254)] font-medium': selectedCoverage === option }"
+    >
+      {{ option }}
+    </li>
+  </ul>
+</div>
+</div>
 
     <!-- Таблица студентов -->
     <table class="w-full text-left border border-purple-200 rounded-lg overflow-hidden">

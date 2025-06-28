@@ -25,37 +25,51 @@
       <tr><td class="px-6 py-2">Телефон</td><td class="px-6 py-2">{{ student.phone }}</td></tr>
 
 <!-- Статус -->
-  <tr>
-    <td class="px-6 py-2">Статус</td>
-      <td class="px-6 py-2">
-        <div class="relative w-48">
-          <button
-            @click="toggleStatusDropdown"
-            class="filter-select w-full flex justify-between items-center"
-          >
-            {{ selectedStatus || 'Статус' }}
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-        <ul
-          v-if="showStatusDropdown"
-          class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg"
+<tr>
+  <td class="px-6 py-2">Статус</td>
+  <td class="px-6 py-2">
+    <div class="relative w-48">
+      <button
+        @click="toggleStatusDropdown"
+        class="filter-select w-full flex justify-between items-center"
+        type="button"
+      >
+        {{ selectedStatus || 'Статус' }}
+        <svg
+          :class="[
+            'w-4 h-4 ml-2 transform transition-transform duration-200',
+            showStatusDropdown ? 'rotate-180' : ''
+          ]"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
         >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </button>
+      <ul
+        v-if="showStatusDropdown"
+        class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg"
+      >
         <li
           v-for="opt in statusOptions"
           :key="opt"
           @click="selectStatus(opt)"
           class="cursor-pointer px-4 py-2 hover:bg-gray-100"
-         :class="{ 'text-[rgb(98,82,254)] font-medium': selectedStatus === opt }"
+          :class="{ 'text-[rgb(98,82,254)] font-medium': selectedStatus === opt }"
         >
           {{ opt }}
         </li>
-        </ul>
-      </div>
-    </td>
-  </tr>
+      </ul>
+    </div>
+  </td>
+</tr>
+
 
 <!-- Top Student -->
   <tr>
@@ -69,35 +83,47 @@
     </td>
   </tr>
 
-<!--Финансирования-->
-  <tr>
-    <td class="px-6 py-2">Финансирование</td>
-    <td class="px-6 py-2">
-      <div class="relative w-48">
+<!-- Финансирование -->
+<tr>
+  <td class="px-6 py-2">Финансирование</td>
+  <td class="px-6 py-2">
+    <div class="relative w-48">
       <button
-      @click="toggleFinancingDropdown"
-      class="filter-select w-full flex justify-between items-center"
-    >
-      
-      {{ selectedFinancing || 'Финансирование' }}
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M19 9l-7 7-7-7"/>
+        @click="toggleFinancingDropdown"
+        class="filter-select w-full flex justify-between items-center"
+        type="button"
+      >
+        {{ selectedFinancing || 'Финансирование' }}
+        <svg
+          :class="[
+            'w-4 h-4 ml-2 transform transition-transform duration-200',
+            showFinancingDropdown ? 'rotate-180' : ''
+          ]"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
       </button>
       <ul
         v-if="showFinancingDropdown"
         class="absolute z-50 mt-2 w-full bg-white border border-purple-200 rounded-lg shadow-lg"
       >
-      <li
-        v-for="opt in financingOptions"
-        :key="opt"
-        @click="selectFinancing(opt)"
-        class="cursor-pointer px-4 py-2 hover:bg-gray-100"
-        :class="{ 'text-[rgb(98,82,254)] font-medium': selectedFinancing === opt }"
-      >
-      {{ opt }}
-      </li>
+        <li
+          v-for="opt in financingOptions"
+          :key="opt"
+          @click="selectFinancing(opt)"
+          class="cursor-pointer px-4 py-2 hover:bg-gray-100"
+          :class="{ 'text-[rgb(98,82,254)] font-medium': selectedFinancing === opt }"
+        >
+          {{ opt }}
+        </li>
       </ul>
     </div>
   </td>
@@ -271,9 +297,21 @@
     type="button"
   >
     {{ newPayment.status || 'Статус' }}
-    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M19 9l-7 7-7-7"/>
+    <svg
+      :class="[
+        'w-4 h-4 ml-2 transform transition-transform duration-200',
+        showNewStatusDropdown ? 'rotate-180' : ''
+      ]"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      />
     </svg>
   </button>
   <ul
@@ -297,7 +335,6 @@
     </li>
   </ul>
 </div>
-
 
 <!-- Сумма -->
   <div class="w-56">
