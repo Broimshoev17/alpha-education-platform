@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold mb-6">Задолженности</h2>
 
 <!-- Tabs -->
-  <div class="flex space-x-4 bg-purple-50 p-3 rounded-lg mb-4">
+  <div class="flex space-x-4 bg-[#ECE9FF] p-3 rounded-lg mb-4">
     <router-link to="/finance/reports/total-revenue" class="tab-button">Общая выручка</router-link>
     <router-link to="/finance/reports/debts" class="tab-button-active">Задолженности</router-link>
     <router-link to="/finance/reports/student-funding" class="tab-button">Финансирование студентов</router-link>
@@ -95,7 +95,7 @@
 
 <!-- Table -->
 <table class="w-full border border-purple-200 rounded-lg overflow-hidden text-left">
-  <thead class="bg-[rgb(185,179,248)] text-sm font-semibold">
+  <thead class="bg-[#ECE9FF] text-sm font-semibold">
     <tr>
       <th class="px-4 py-2 w-12">№</th>
       <th class="px-4 py-2">Студент</th>
@@ -129,7 +129,7 @@
 <!-- Text Box for Debts -->
 <div class="mt-6 w-full rounded-xl overflow-hidden border border-[#E0D7FF]">
 <!-- Период -->
-<div class="bg-[rgb(185,179,248)] px-6 py-4 text-sm font-semibold text-black">
+<div class="bg-[#ECE9FF] px-6 py-4 text-sm font-semibold text-black">
   Период {{ formattedPeriod }}
 </div>
 <!-- Общая сумма платежей -->
@@ -148,7 +148,7 @@
   <div>{{ unpaidAmount.toLocaleString('ru-RU') }} ₸</div>
 </div>
 <!-- Общая задолженность -->
-<div class="bg-[rgb(185,179,248)] px-6 py-4 text-sm font-semibold flex justify-between items-center">
+<div class="bg-[#ECE9FF] px-6 py-4 text-sm font-semibold flex justify-between items-center">
   <div>Общая задолженность</div>
   <div>{{ unpaidAmount.toLocaleString('ru-RU') }} ₸</div>
 </div>
@@ -341,7 +341,7 @@ const unpaidAmount = computed(() => totalPayments.value - paidAmount.value);
   font-weight: 500;
 }
 .download-btn {
-  background-color: #6252fe;
+  background-color: #6252FE;
   color: white;
   font-size: 14px;
   font-weight: 600;
