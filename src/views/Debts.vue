@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold mb-6">Задолженности</h2>
 
 <!-- Tabs -->
-  <div class="flex space-x-4 bg-[#ECE9FF] p-3 rounded-lg mb-4">
+  <div class="flex space-x-4 bg-[#F1EFFF] p-3 rounded-lg mb-4">
     <router-link to="/finance/reports/total-revenue" class="tab-button">Общая выручка</router-link>
     <router-link to="/finance/reports/debts" class="tab-button-active">Задолженности</router-link>
     <router-link to="/finance/reports/student-funding" class="tab-button">Финансирование студентов</router-link>
@@ -303,12 +303,12 @@ const unpaidAmount = computed(() => totalPayments.value - paidAmount.value);
   display: inline-block;
 }
 .tab-button {
-  background: #f4f0ff;
-  color: #836eff;
+  background: #FFFFFF;
+  color: #6252FE;
 }
 .tab-button-active {
-  background: #836eff;
-  color: white;
+  background: #6252FE;
+  color: #FFFFFF;
 }
 .filter-select {
   background: #f4f0ff;

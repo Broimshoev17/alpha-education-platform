@@ -13,7 +13,7 @@
 <!-- Блок 1: Информация о студенте -->
   <div class="mb-6 w-full rounded-xl border border-[#E0D7FF] overflow-visible">
     <table class="w-full text-left">
-      <thead class="bg-[rgb(185,179,248)] text-sm font-semibold">
+      <thead class="bg-[#F1EFFF] text-sm font-semibold">
         <tr>
           <th class="px-6 py-3 rounded-tl-lg">Данные</th>
           <th class="px-6 py-3 rounded-tr-lg">Информация о студенте</th>
@@ -135,7 +135,7 @@
 <!-- Блок 2: Сводка платежей -->
   <div class="mb-6 w-full rounded-xl border border-[#E0D7FF] overflow-visible">
     <table class="w-full text-left">
-      <thead class="bg-[rgb(185,179,248)] text-sm font-semibold">
+      <thead class="bg-[#F1EFFF] text-sm font-semibold">
         <tr>
           <th class="px-6 py-3 rounded-tl-lg">Оплата за курс</th>
           <th class="px-6 py-3 rounded-tr-lg">{{ student.totalCoursePrice.toLocaleString('ru-RU') }} ₸</th>
@@ -164,7 +164,7 @@
 
 <!-- Переключатель режимов -->
   <div class="mt-14 mb-6">
-    <div class="bg-[rgb(185,179,248)]  p-2 rounded-lg">
+    <div class="bg-[#F1EFFF]  p-2 rounded-lg">
       <div class="flex space-x-3">
         <button
         :class="mode === 'calendar' ? 'btn-primary flex-1' : 'btn-secondary flex-1'"
@@ -193,7 +193,7 @@
     class="flex items-center bg-[rgb(194,189,250)] rounded-lg p-4"
   >
 <!-- Блок с галочкой -->
-  <div class="p-1 mr-4 flex-shrink-0 bg-[#6252FE] rounded border-2 border-white">
+  <div class="p-1 mr-4 flex-shrink-0 bg-[#9085FF] rounded border-2 border-white">
     <svg
       class="w-4 h-4 text-white"
       fill="none"
@@ -226,7 +226,7 @@
   <div v-else-if="mode === 'history'" class="space-y-6">
 <!-- Таблица с историей платежей (осталась на месте сверху) -->
   <table class="w-full border border-purple-200 rounded-lg overflow-hidden text-left">
-    <thead class="bg-[rgb(185,179,248)] text-sm font-semibold">
+    <thead class="bg-[#F1EFFF] text-sm font-semibold">
       <tr>
         <th class="px-4 py-2">Дата платежа</th>
         <th class="px-4 py-2">Комментарий</th>
@@ -266,7 +266,7 @@
 <!-- 2) Форма добавления платежа в синем контейнере -->
   <div
     v-else
-    class=" bg-[rgb(185,179,248)] p-6 rounded-lg flex items-center space-x-4"
+    class=" bg-[#F1EFFF] p-6 rounded-lg flex items-center space-x-4"
   >
 <!-- Дата платежа -->
   <div class="w-56">
@@ -525,7 +525,7 @@ onMounted(async () => {
     totalCoursePrice: 850000,
     discountPercent: 30,
     discountedPrice: 595000,          
-    paymentPeriod: '6 месяца',
+    paymentPeriod: '8 месяца',
     amountPaid: 595000,
     amountDue: 0,
     sampleDate: '24.06.2025',
@@ -570,13 +570,13 @@ onMounted(async () => {
 }
 .btn-primary {
   background: #6252fe;
-  color: white;
+  color: #FFFFFF;
   font-weight: 600;
   border-radius: 8px;
   padding: 10px 16px;
 }
 .btn-secondary {
-  background: #f4f0ff;
+  background: #FFFFFF;
   color: #6252FE;
   font-weight: 600;
   border-radius: 8px;

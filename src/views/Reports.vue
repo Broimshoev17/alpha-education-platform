@@ -50,10 +50,10 @@ h2 {
 .report-tabs {
   display: flex;
   gap: 12px;
-  background-color: #b9b3f8;
-  padding: 14px;
-  border-radius: 12px;
-  max-width: 520px;
+  background-color: #ECE9FF;
+  padding: 11px;
+  border-radius: 10px;
+  max-width: 1050px;
   margin-bottom: 100px;
 }
 

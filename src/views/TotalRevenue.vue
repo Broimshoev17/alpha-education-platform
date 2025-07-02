@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold mb-6">Общая выручка</h2>
 
 <!-- Кнопки фильтрации вкладок -->
-  <div class="flex space-x-4 bg-purple-50 p-3 rounded-lg mb-4">
+  <div class="flex space-x-4 bg-[#F1EFFF] p-3 rounded-lg mb-4">
     <router-link
       to="/finance/reports/total-revenue"
       class="tab-button"
@@ -144,7 +144,7 @@
 
 <!-- Таблица -->
   <table class="w-full border border-purple-200 rounded-lg overflow-hidden text-left">
-    <thead class="bg-[rgb(185,179,248)] text-sm font-semibold">
+    <thead class="bg-[#ECE9FF] text-sm font-semibold">
       <tr>
         <th class="px-4 py-2">Дата</th>
           <th class="px-4 py-2">Сумма (тг)</th>
@@ -167,7 +167,7 @@
 <!-- Summary Box: Always visible -->
   <div class="mt-6 w-full rounded-xl overflow-hidden border border-[#E0D7FF]">
   <!-- Период -->
-  <div class="bg-[rgb(185,179,248)] px-6 py-4 text-sm font-semibold text-black">
+  <div class="bg-[#ECE9FF] px-6 py-4 text-sm font-semibold text-black">
     Период {{ formattedPeriod }}
   </div>
   <!-- Выручка -->
@@ -176,7 +176,7 @@
     <div>{{ totalAmountDisplay }} тг</div>
   </div>
   <!-- Общая выручка -->
-  <div class="bg-[rgb(185,179,248)] px-6 py-4 text-sm font-semibold flex justify-between items-center">
+  <div class="bg-[#ECE9FF] px-6 py-4 text-sm font-semibold flex justify-between items-center">
     <div>Общая выручка</div>
     <div>{{ totalAmountDisplay }} тг</div>
   </div>
@@ -359,12 +359,12 @@ const rows = [
   display: inline-block;
 }
 .tab-button {
-  background: #f4f0ff;
-  color: #836eff;
+  background: #FFFFFF;
+  color: #6252FE;
 }
 .tab-button-active {
-  background: #836eff;
-  color: white;
+  background: #6252FE;
+  color: #FFFFFF;
 }
 .filter-select {
   background: #f4f0ff;
@@ -381,7 +381,7 @@ const rows = [
   padding: 10px;
 }
 .download-btn {
-  background-color: #6252fe;
+  background-color: #6252FE;
   color: white;
   font-size: 14px;
   font-weight: 600;

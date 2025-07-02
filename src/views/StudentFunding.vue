@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold mb-6">Финансирование студентов</h2>
 
 <!-- Кнопки фильтрации вкладок -->
-  <div class="flex space-x-4 bg-purple-50 p-3 rounded-lg mb-4">
+  <div class="flex space-x-4 bg-[#F1EFFF] p-3 rounded-lg mb-4">
     <router-link
       to="/finance/reports/total-revenue"
       class="tab-button"
@@ -113,7 +113,7 @@
 
     <!-- Таблица студентов -->
     <table class="w-full text-left border border-purple-200 rounded-lg overflow-hidden">
-      <thead class="bg-[rgb(185,179,248)] text-sm font-semibold">
+      <thead class="bg-[#ECE9FF] text-sm font-semibold">
         <tr>
           <th class="px-4 py-2 w-12">№</th>
           <th class="px-4 py-2">Студент</th>
@@ -145,7 +145,7 @@
 <div class="mt-6 w-full overflow-hidden rounded-xl border border-[#E0D7FF]">
     <table class="w-full text-sm text-left border-collapse">
        <thead>
-        <tr class="bg-[rgb(185,179,248)] font-semibold divide-x divide-[#E0D7FF]">
+        <tr class="bg-[#ECE9FF] font-semibold divide-x divide-[#E0D7FF]">
           <th class="px-4 py-2">Тип финансирования</th>
           <th class="px-4 py-2">Кол-во студентов</th>
           <th class="px-4 py-2">Покрытие (%)</th>
@@ -163,7 +163,7 @@
           <td class="px-4 py-2">{{ group.covered }}</td>
           <td class="px-4 py-2">{{ group.paid }}</td>
       </tr>
-      <tr class="bg-[rgb(185,179,248)] font-semibold divide-x divide-[#E0D7FF]">
+      <tr class="bg-[#ECE9FF] font-semibold divide-x divide-[#E0D7FF]">
           <td class="px-4 py-2">Итого</td>
           <td class="px-4 py-2">{{ fundingTotal.count }}</td>
           <td class="px-4 py-2">-</td>
@@ -296,7 +296,7 @@ function downloadExcel() {
   font-size: 14px;
 }
 .download-btn {
-  background-color: #6252fe;
+  background-color: #6252FE;
   color: white;
   font-size: 14px;
   font-weight: 600;
@@ -306,8 +306,8 @@ function downloadExcel() {
 }
 
 .tab-button {
-  background: #f4f0ff;
-  color: #836eff;
+  background: #FFFFFF;
+  color: #6252FE;
   padding: 6px 16px;
   border-radius: 8px;
   font-weight: 500;
@@ -316,8 +316,8 @@ function downloadExcel() {
   display: inline-block;
 }
 .tab-button-active {
-  background: #836eff;
-  color: white;
+  background: #6252FE;
+  color: #FFFFFF;
 }
 
 .download-btn:hover {

@@ -16,17 +16,19 @@
   </div>
 </div>
 
-<!-- Кнопка фильтра -->
-<div class="filter-bar" style="width: 300px;">
-  <button
-    :class="['filter-btn', { 'filter-btn--active': filtersVisible }]"
-    @click="toggleFilters"
-    type="button"
-  >
-    <img src="@/assets/logos/filter.png" class="filter-icon" />
-    <span>Фильтр</span>
-  </button>
-</div>
+
+<!-- Кнопки фильтра -->
+    <div class="filter-bar">
+      <button
+        :class="['filter-btn', { 'filter-btn--active': filtersVisible }]"
+        @click="toggleFilters"
+        type="button"
+      >
+        <img src="@/assets/logos/filter.png" class="filter-icon" />
+        <span>Фильтр</span>
+      </button>
+    </div>
+  
 
 <!-- Панель фильтров -->
 <div v-if="filtersVisible" class="filters-box">
@@ -138,7 +140,7 @@
           class="cursor-pointer"
 >
         <td>
-          <div class=" w-6 h-6 rounded-md bg-[#F1ECFF] text-[rgb(98,82,254)] text-xs font-semibold flex items-center justify-center">
+          <div class=" w-6 h-6 rounded-md bg-[#F1EFFF] text-[rgb(98,82,254)] text-xs font-semibold flex items-center justify-center">
             {{ index + 1 }}
           </div>
         </td>
@@ -259,9 +261,7 @@ const filteredStudents = computed(() =>
 
 .filter-btn {
   background-color: #f4f0ff;
-  color: #836eff;
-  border: 1px solid #cfc0ff;
-  border-radius: 10px;
+  color: #6252FE;
   padding: 8px 16px;
   font-weight: 500;
   cursor: pointer;
@@ -290,7 +290,7 @@ const filteredStudents = computed(() =>
 
 .filter-select {
   background: #f4f0ff;
-  color: #836eff;
+  color: #6252FE;
   border: 1px solid #cfc0ff;
   border-radius: 10px;
   padding: 8px 12px;
@@ -319,7 +319,7 @@ const filteredStudents = computed(() =>
 }
 
 .student-table thead {
-  background-color: #b9b3f8;
+  background-color: #F1EFFF;
   font-weight: 600;
 }
 
@@ -366,5 +366,4 @@ const filteredStudents = computed(() =>
   width: 16px;
   height: 16px;
 }
-
 </style>
