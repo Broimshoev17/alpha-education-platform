@@ -143,7 +143,7 @@
 </div>
 
 <!-- Таблица -->
-  <table class="w-full border border-purple-200 rounded-lg overflow-hidden text-left">
+  <table class="w-full border bg-white border-purple-200 rounded-lg overflow-hidden text-left">
     <thead class="bg-[#ECE9FF] text-sm font-semibold">
       <tr>
         <th class="px-4 py-2">Дата</th>
@@ -367,19 +367,13 @@ const rows = [
   color: #FFFFFF;
 }
 .filter-select {
-  background: #f4f0ff;
+  background: #ffffff;
   color: #6252FE;
-  border: 1px solid #cfc0ff;
   border-radius: 8px;
   padding: 8px 12px;
   font-size: 14px;
 }
-.datepicker-popup {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  padding: 10px;
-}
+
 .download-btn {
   background-color: #6252FE;
   color: white;
@@ -443,5 +437,17 @@ const rows = [
 .custom-dropdown-item.selected {
   color: #6252FE;
   font-weight: 600;
+}
+
+.filters-wrapper {
+background-color: #F1EFFF;
+  border-radius: 12px;
+  padding: 9px;
+  margin-bottom: 16px;
+  margin-left: 0px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 </style>

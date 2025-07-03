@@ -19,7 +19,7 @@
           <th class="px-6 py-3 rounded-tr-lg">Информация о студенте</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-[#E6E3F1]">
+      <tbody class="divide-y divide-[#E6E3F1], bg-[#FFFFFF]">
       <tr><td class="px-6 py-2">ИИН</td><td class="px-6 py-2">{{ student.iin }}</td></tr>
       <tr><td class="px-6 py-2">Email</td><td class="px-6 py-2">{{ student.email }}</td></tr>
       <tr><td class="px-6 py-2">Телефон</td><td class="px-6 py-2">{{ student.phone }}</td></tr>
@@ -141,7 +141,7 @@
           <th class="px-6 py-3 rounded-tr-lg">{{ student.totalCoursePrice.toLocaleString('ru-RU') }} ₸</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-[#E6E3F1]">
+      <tbody class="divide-y divide-[#E6E3F1], bg-[#FFFFFF]">
         <tr>
           <td class="px-6 py-2">Сумма со скидкой {{ student.discountPercent }}%</td>
           <td class="px-6 py-2">{{ student.discountedPrice.toLocaleString('ru-RU') }} ₸</td>
@@ -285,7 +285,8 @@
       v-model="newPayment.comment"
       type="text"
       placeholder="Комментарий"
-      class="filter-select w-full focus:outline-none focus:ring-2 focus:ring-[#9a8ffd]"
+      class="filter-select bg-white w-full focus:outline-none focus:ring-2,"
+      style="background-color: #ffffff;"
     />
   </div>
 
@@ -295,6 +296,7 @@
     @click="toggleNewStatusDropdown"
     class="filter-select w-full flex justify-between items-center"
     type="button"
+    style="background-color: #ffffff;"
   >
     {{ newPayment.status || 'Статус' }}
     <svg
@@ -342,7 +344,8 @@
       v-model.number="newPayment.amount"
       type="number"
       placeholder="Сумма"
-      class="filter-select w-full focus:outline-none focus:ring-2 focus:ring-[#9a8ffd]"
+      class="filter-select w-full focus:outline-none"
+      style="background-color: #ffffff;"
     />
   </div>
 
@@ -357,7 +360,7 @@
     </button>
     <button
       @click="showAddPanel = false"
-      class="bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-400"
+      class="bg-white text-gray-700 py-2 px-4 rounded hover:bg-[#D77A7A]"
       type="button"
     >
       Отмена
@@ -561,9 +564,8 @@ onMounted(async () => {
 <!-- Styles -->
 <style scoped>
 .filter-select {
-  background: #f4f0ff;
+  background: #F1EFFF;
   color: #6252FE;
-  border: 1px solid #cfc0ff;
   border-radius: 8px;
   padding: 8px 12px;
   font-size: 14px;
@@ -623,6 +625,14 @@ table {
 }
 .add-payment-btn:hover {
   background-color: #5140E5;
+}
+
+/* новый класс для полей внутри панели добавления платежа */
+.add-payment-input {
+  background-color: #FFFFFF;
+  /* если нужно, добавьте !important:
+     background-color: #FFFFFF !important;
+  */
 }
 </style>
 

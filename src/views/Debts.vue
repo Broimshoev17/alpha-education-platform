@@ -94,7 +94,7 @@
 </div>    
 
 <!-- Table -->
-<table class="w-full border border-purple-200 rounded-lg overflow-hidden text-left">
+<table class="w-full bg-white border border-purple-200 rounded-lg overflow-hidden text-left">
   <thead class="bg-[#ECE9FF] text-sm font-semibold">
     <tr>
       <th class="px-4 py-2 w-12">№</th>
@@ -311,9 +311,8 @@ const unpaidAmount = computed(() => totalPayments.value - paidAmount.value);
   color: #FFFFFF;
 }
 .filter-select {
-  background: #f4f0ff;
+  background: #ffffff;
   color: #836eff;
-  border: 1px solid #cfc0ff;
   border-radius: 8px;
   padding: 8px 12px;
   font-size: 14px;
@@ -351,5 +350,17 @@ const unpaidAmount = computed(() => totalPayments.value - paidAmount.value);
 }
 .download-btn:hover {
   background-color: #5140e5;
+}
+
+.filters-wrapper {
+ background-color: #F1EFFF;
+  border-radius: 12px;
+  padding: 9px;
+  margin-bottom: 16px;
+  margin-left: 0px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 </style>

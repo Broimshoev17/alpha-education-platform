@@ -17,17 +17,18 @@
 </div>
 
 
-<!-- Кнопки фильтра -->
-    <div class="filter-bar">
-      <button
-        :class="['filter-btn', { 'filter-btn--active': filtersVisible }]"
-        @click="toggleFilters"
-        type="button"
-      >
-        <img src="@/assets/logos/filter.png" class="filter-icon" />
-        <span>Фильтр</span>
-      </button>
-    </div>
+<div class="filter-button-wrapper">
+  <div class="filter-bar">
+    <button
+      :class="['filter-btn', { 'filter-btn--active': filtersVisible }]"
+      @click="toggleFilters"
+      type="button"
+    >
+      <img src="@/assets/logos/filter.png" class="filter-icon" />
+      <span>Фильтр</span>
+    </button>
+  </div>
+</div>
   
 
 <!-- Панель фильтров -->
@@ -246,10 +247,9 @@ const filteredStudents = computed(() =>
 .search-input {
   padding: 10px 15px 10px 38px;
   font-size: 14px;
-  border: 1px solid #cfc0ff;
   border-radius: 10px;
-  background-color: #f4f0ff;
-  width: 220px;
+  background-color: #F1EFFF;
+  width: 500px;
   outline: none;
   color: #5a4fcf;
 }
@@ -269,6 +269,7 @@ const filteredStudents = computed(() =>
   display: flex;
   align-items: center;
   gap: 6px;
+  margin-left: 10px;
 }
 
 .filter-icon {
@@ -277,11 +278,11 @@ const filteredStudents = computed(() =>
 }
 
 .filters-box {
-  background-color: #f4f0ff;
+  background-color: #F1EFFF;
   border-radius: 12px;
-  padding: 16px;
+  padding: 9px;
   margin-bottom: 16px;
-  margin-left: -16px;
+  margin-left: 0px;
   display: flex;
   gap: 16px;
   align-items: center;
@@ -289,9 +290,8 @@ const filteredStudents = computed(() =>
 }
 
 .filter-select {
-  background: #f4f0ff;
+  background: #FFFFFF;
   color: #6252FE;
-  border: 1px solid #cfc0ff;
   border-radius: 10px;
   padding: 8px 12px;
   font-size: 14px;
@@ -303,19 +303,20 @@ const filteredStudents = computed(() =>
   align-items: center;
   padding: 8px 12px;
   border-radius: 10px;
-  border: 1px solid #cfc0ff;
   font-size: 14px;
   min-height: 40px;
   gap: 8px;
-  color: #836eff;
+  color: #6252FE;
+  background-color: #FFFFFF;
 }
 
 .student-table {
   width: 100%;
   border-collapse: collapse;
-  border: 2px solid #dcd2ff;
+  border:#F1EFFF;
   border-radius: 10px;
   overflow: hidden;
+  background-color: #FFFFFF;
 }
 
 .student-table thead {
@@ -365,5 +366,17 @@ const filteredStudents = computed(() =>
 .filter-icon {
   width: 16px;
   height: 16px;
+}
+
+.filter-button-wrapper {
+  background-color: #F1EFFF;
+  border-radius: 12px;
+  padding-top: 9px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;            
 }
 </style>
